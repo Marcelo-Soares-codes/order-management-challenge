@@ -1,4 +1,4 @@
-import { describe, it, expect } from "bun:test";
+import { describe, it, expect } from "vitest";
 import { getNextState } from "./order.state-machine";
 import { AppError } from "../../shared/errors/AppError";
 
@@ -17,16 +17,12 @@ describe("Order State Machine", () => {
     expect(() => getNextState("COMPLETED")).toThrow(AppError);
   });
 
-  it("should throw AppError instance with statusCode 409 when advancing from COMPLETED", () => {
-    let thrownError: unknown;
-
+  it("should throw AppError with statusCode 409 when advancing from COMPLETED", () => {
     try {
       getNextState("COMPLETED");
     } catch (error) {
-      thrownError = error;
+      expect(error).toBeInstanceOf(AppError);
+      expect((error as AppError).statusCode).toBe(409);
     }
-
-    expect(thrownError).toBeInstanceOf(AppError);
-    expect((thrownError as AppError).statusCode).toBe(409);
   });
 });
