@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { getNextState } from "./order.state-machine";
-import { AppError } from "../../shared/errors/AppError";
+import { getNextState } from "../order.state-machine";
+import { AppError } from "../../../shared/errors/AppError";
 
 describe("Order State Machine", () => {
   it("should return ANALYSIS when current state is CREATED", () => {
