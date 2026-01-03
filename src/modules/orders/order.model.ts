@@ -1,10 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import type {
-  OrderState,
-  OrderStatus,
-  ServiceStatus,
-  OrderServiceItem,
-} from "./order.types";
+import type { OrderState, OrderStatus, OrderServiceItem } from "./order.types";
 
 export interface OrderDocument extends Document {
   lab: string;
